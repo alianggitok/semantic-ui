@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<title>semantic-ui</title>
+	<link rel="stylesheet" href="js/lib/semantic-ui/semantic.min.css">
+</head>
+
+<body>
+	
+	<form class="ui segment form">
+		<div class="two fields">
+			<div class="field">
+				<input type="text">
+			</div>
+			
+		</div>
+		<button class="ui button primary" style="" title="welcome">发送</button>
+	</form>
+	
+
+	<script src="js/lib/jquery-1.11.2.min.js"></script>
+	<script src="js/lib/semantic-ui/semantic.min.js"></script>
+	<script>
+		$.fn.api.settings.api={
+			'search github':'//github.com/search/count?q={query}',
+			'save profiles':'/profiles'
+		};
+		$('.ui.button').api({
+			on:'click',
+			action:'search github',
+			method:'POST',
+			urlData:{//url参数
+				query:'semanticui'//对应{query}
+			},
+			data:{//json参数
+				other:'blablablabla'
+			},
+//			mockResponse: {
+//				success: true
+//			}
+		}).state({
+			text:{
+				inactive:'发送',
+				active:'发送中',
+			}
+		});
+		
+	</script>
+	
+</body>
+
+</html>
